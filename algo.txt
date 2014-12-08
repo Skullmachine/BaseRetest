@@ -1,0 +1,30 @@
+ Base Retest
+ 
+ ***************
+ Initialisation:
+ 
+	- DateRun prend la valeur de la date de début de la période d'importation choisie
+	
+ ***************
+ 
+ 
+ Procédure BT_Importer_Click(Evènement Click)
+ 
+ 
+	Pour chaque ligne de la table Faire
+	
+		Choix Lecteur Réseau
+		
+		Association adresse IP/répertoire au lecteur
+		
+		Tant que DateRun n'est pas égale à la date de fin Faire
+		
+			Copie du fichier 
+			
+		Fin tant que
+		
+	Fin Pour
+	
+Fin 
+
+Fonction 

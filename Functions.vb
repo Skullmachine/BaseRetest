@@ -43,12 +43,10 @@ Module Functions
 
             'Si la connexion est réussie alors affichage du message
             If connection.State = ConnectionState.Open Then
-                Console.WriteLine("Les donnees à l'adresse " & originPathSource & " ont ete importe.")
+                ImportationData = True
             Else
                 ImportationData = False
             End If
-
-            ImportationData = True
 
         End Using
 
@@ -104,33 +102,15 @@ Module Functions
 
         If (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then 'Si fichier existe alors copie
             myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
-            Copy = 1
-        ElseIf (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then 'Si fichier existe alors copie
-            F_WSH.CopyFile(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", filePathDestination)
-            Console.WriteLine(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak a été copié")
-            Copy = 1
-        ElseIf (Dir(drive & "\Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then 'Si fichier existe alors copie
-            F_WSH.CopyFile(drive & "\Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".csv", filePathDestination)
-            Console.WriteLine(drive & "\Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".csv a été copié")
-            Copy = 1
-        ElseIf (Dir(drive & "\Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".bak", vbNormal) = "Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then 'Si fichier existe alors copie
-            F_WSH.CopyFile(drive & "\Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".bak", filePathDestination)
-            Console.WriteLine(drive & "\Résultats00" & DateRun.ToString("yyyy_MM_dd") & ".bak a été copié")
-            Copy = 1
-        ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then 'Si fichier existe alors copie
-            F_WSH.CopyFile(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", filePathDestination)
-            Console.WriteLine(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv a été copié")
-            Copy = 1
-        ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then 'Si fichier existe alors copie
-            F_WSH.CopyFile(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", filePathDestination)
-            Console.WriteLine(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak a été copié")
+            myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
             Copy = 1
         End If
 
-        myProcess.Start() 'lance le process
-        myProcess.WaitForExit() 'attend qu'il soit terminé avant d'aller plus loin
-        myProcess.Close() 'ferme le process
-
+        If Copy = True Then
+            myProcess.Start() 'lance le process
+            myProcess.WaitForExit() 'attend qu'il soit terminé avant d'aller plus loin
+            myProcess.Close() 'ferme le process
+        End If
         objFSO = Nothing
 
         FileName = Copy

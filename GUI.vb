@@ -20,8 +20,8 @@ Public Class GUI
     Dim computerLogin As String
     Dim computerPassword As String
     Dim filePathSource As String
-    Dim date_debut As Date = CDate("01/02/2014")
-    Dim date_fin As Date = CDate("01/01/2015")
+    Dim date_debut As Date = CDate("01/01/2012")
+    Dim date_fin As Date = CDate("31/12/2014")
     Dim queryString As String = _
    "SELECT dataimport();"
 
@@ -67,7 +67,11 @@ Public Class GUI
                     'Importe dans la BDD le fichier qui a été copié
                     Functions.ImportationData(database, server, port, user, password, queryString, drive, Ligne("path").ToString, Ligne("login").ToString, Ligne("password").ToString, filePathSource, filePathDestination)
 
+                    Console.WriteLine("Le fichier " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv à l'adresse " & originPathSource & " ont ete importe.")
+
                 End If
+
+
 
                 DateRun = DateAdd("d", 1, DateRun) ' Incrémentation de la date
 

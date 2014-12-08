@@ -67,13 +67,13 @@ Public Class GUI
                     'Importe dans la BDD le fichier qui a été copié
                     Functions.ImportationData(database, server, port, user, password, queryString, drive, Ligne("path").ToString, Ligne("login").ToString, Ligne("password").ToString, filePathSource, filePathDestination)
 
-                    Console.WriteLine("Le fichier " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv à l'adresse " & originPathSource & " ont ete importe.")
+                    'Affichage des lignes importées
+                    Console.WriteLine("Le fichier " & Ligne("path".ToString) & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv a été importé.")
 
                 End If
 
-
-
-                DateRun = DateAdd("d", 1, DateRun) ' Incrémentation de la date
+                ' Incrémentation de la date
+                DateRun = DateAdd("d", 1, DateRun)
 
             Loop
 

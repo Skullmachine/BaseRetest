@@ -8,25 +8,8 @@ Imports Microsoft.VisualBasic.FileIO
 
 Module Functions
 
-    '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    '$                      Script programmable version 1.0.1.9                                                                                                                 $
-    '$                            Développé par T.ARTUS                                                                                                                         $
-    '$                                le 27/11/14                                                                                                                               $
-    '$                                                                                                                                                                          $
-    '$                                                                                                                                                                          $
-    '$ Fonctions:                                                                                                                                                               $
-    '$      ImportationData(database, server, port, user, password, queryString, drive, originPathSource, computerLogin, computerPassword, filePathSource, filePathDestination) $                                                                         $
-    '$      ImportationDataTesteur(database, server, port, user, password, queryStringTesteur, computerLogin, computerPassword)                                                 $                                                                                                               $
-    '$                                                                                                                                                                          $
-    '$                                                                                                                                                                          $
-    '$                                                                                                                                                                          $
-    '$                                                                                                                                                                          $
-    '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-    Private objFSO As Object
-
     '*-------------------*Importation des données dans la base*----------------------*
-    Public Function ImportationData(database As String, server As String, port As Integer, user As String, password As String, queryString As String, drive As String, originPathSource As String, computerLogin As String, computerPassword As String, filePathSource As String, filePathDestination As String) As Boolean
+    Public Sub ImportationData(database As String, server As String, port As Integer, user As String, password As String, queryString As String, drive As String, originPathSource As String, computerLogin As String, computerPassword As String, filePathSource As String, filePathDestination As String) As Boolean
 
         '*****************Création d'un objet OdbcCommand contenant la requête SQL à exécuter*****************
         Dim command As New OdbcCommand(queryString)
@@ -34,23 +17,24 @@ Module Functions
         '*****************Ouverture d'une connexion à la base de donnée*****************
         Using connection As New OdbcConnection("Driver={PostgreSQL ANSI};database=" & database & ";server=" & server & ";port=" & port & ";uid=postgres;sslmode=disable;readonly=0;protocol=7.4;User ID=" & user & ";password=" & password & ";")
             command.Connection = connection
+            Try
+                'Ouverture de la connexion
+                connection.Open()
+                Try
+                    'Exécution de la requête
+                    command.ExecuteNonQuery()
 
-            'Ouverture de la connexion
-            connection.Open()
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
 
-            'Exécution de la requête
-            command.ExecuteNonQuery()
-
-            'Si la connexion est réussie alors affichage du message
-            If connection.State = ConnectionState.Open Then
-                ImportationData = True
-            Else
-                ImportationData = False
-            End If
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
 
         End Using
 
-    End Function
+    End Sub
 
     Public Function ImportationDataTesteur(database As String, server As String, port As Integer, user As String, password As String, queryStringTesteur As String, computerLogin As String, computerPassword As String) As DataSet
 
@@ -92,27 +76,56 @@ Module Functions
 
     Public Function FileName(drive As String, DateRun As Date, filePathDestination As String) As Boolean
 
-        Dim Copy As Boolean = 0
-        Dim strCmdCopy As String
+        Dim Copy As Boolean = False
 
         Dim myProcess As New Process()
-        myProcess.StartInfo.FileName = "cmd.exe" 'l'application
 
-        objFSO = CreateObject("Scripting.FileSystemObject")     'Création d'un Object File system
+        'On donne le nom de l'application
+        myProcess.StartInfo.FileName = "cmd.exe"
 
-        If (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then 'Si fichier existe alors copie
+        'Si le fichier existe alors...
+        If (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then
+
+            'On copie le fichier avec le protocle ssh avec l'application pscp sur le serveur Linux où se situe la BDD
             myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
-            myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
-            Copy = 1
+
+            'On met Copy égal à True
+            Copy = True
+
+        ElseIf (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then
+            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            Copy = True
+        ElseIf (Dir(drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv", vbNormal) = "Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv") Then
+            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            Copy = True
+        ElseIf (Dir(drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak", vbNormal) = "Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak") Then
+            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            Copy = True
+        ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then
+            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            Copy = True
+        ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then
+            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            Copy = True
         End If
 
         If Copy = True Then
-            myProcess.Start() 'lance le process
-            myProcess.WaitForExit() 'attend qu'il soit terminé avant d'aller plus loin
-            myProcess.Close() 'ferme le process
-        End If
-        objFSO = Nothing
 
+            'Cache l'invite de commande Windows
+            myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+
+            'Lance le processus
+            myProcess.Start()
+
+            'Attend qu'il soit terminé avant d'aller plus loin
+            myProcess.WaitForExit()
+
+            'Ferme le processus
+            myProcess.Close()
+
+        End If
+
+        ' On retourne la valeur de Copy
         FileName = Copy
 
     End Function

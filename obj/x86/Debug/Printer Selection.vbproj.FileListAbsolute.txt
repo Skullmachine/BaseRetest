@@ -1,0 +1,60 @@
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\bin\Debug\Printer Selection.exe
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\bin\Debug\Printer Selection.pdb
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\bin\Debug\Printer Selection.xml
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.baml
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.g.vb
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Application.g.vb
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection_MarkupCompile.cache
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.g.resources
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer_Selection.Resources.resources
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.exe
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.xml
+C:\Users\Piero Sbressa\Desktop\Printer Selection\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.pdb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.exe
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.xml
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.pdb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.baml
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.g.vb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Application.g.vb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection_MarkupCompile.cache
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.g.resources
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer_Selection.Resources.resources
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.exe
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.xml
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.pdb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\bin\Debug\Printer Selection.exe
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\bin\Debug\Printer Selection.pdb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\bin\Debug\Printer Selection.xml
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.baml
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.g.vb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Application.g.vb
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection_MarkupCompile.cache
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.g.resources
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\Printer_Selection.Resources.resources
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Piero Sbressa\Desktop\Printer Selection_VB2\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.exe
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.xml
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.pdb
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\bin\Debug\Printer Selection.exe
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\bin\Debug\Printer Selection.pdb
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\bin\Debug\Printer Selection.xml
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.baml
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\MainWindow.g.vb
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Application.g.vb
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection_MarkupCompile.cache
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer Selection.g.resources
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\Printer_Selection.Resources.resources
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\CARMELO\Documenti\Visual Studio 2010\Projects\Printer Selection_VB\Printer Selection\Printer Selection\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\users\F85601A\Downloads\Printer Selection\obj\x86\Debug\Printer Selection.exe
+D:\users\F85601A\Downloads\Printer Selection\obj\x86\Debug\Printer Selection.xml
+D:\users\F85601A\Downloads\Printer Selection\obj\x86\Debug\Printer Selection.pdb

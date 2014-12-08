@@ -1,0 +1,70 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PrinterSelection
+</name>
+</assembly>
+<members>
+<member name="M:Printer_Selection.MainWindow.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:Printer_Selection.MainWindow">
+	<summary>
+MainWindow
+</summary>
+</member><member name="M:Printer_Selection.Application.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="M:Printer_Selection.Application.Main">
+	<summary>
+Application Entry Point.
+</summary>
+</member><member name="T:Printer_Selection.Application">
+	<summary>
+Application
+</summary>
+</member><member name="P:Printer_Selection.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Printer_Selection.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Printer_Selection.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:Printer_Selection.My.MyWpfExtension.Application">
+	<summary>
+ Restituisce l'oggetto applicazione per l'applicazione in esecuzione
+ </summary>
+</member><member name="P:Printer_Selection.My.MyWpfExtension.Computer">
+	<summary>
+ Restituisce le informazioni sul computer host.
+ </summary>
+</member><member name="P:Printer_Selection.My.MyWpfExtension.User">
+	<summary>
+ Restituisce le informazioni per l'utente corrente. Se si desidera eseguire l'applicazione con le 
+ credenziali utente di Windows correnti, chiamare My.User.InitializeWithWindowsUser().
+ </summary>
+</member><member name="P:Printer_Selection.My.MyWpfExtension.Log">
+	<summary>
+ Restituisce il registro applicazioni. I listener possono essere configurati dal file di configurazione dell'applicazione.
+ </summary>
+</member><member name="P:Printer_Selection.My.MyWpfExtension.Windows">
+	<summary>
+ Restituisce l'insieme di oggetti Window definiti nel progetto.
+ </summary>
+</member><member name="T:Printer_Selection.My.MyWpfExtension">
+	<summary>
+ Modulo utilizzato per definire le proprietà disponibili nello spazio dei nomi My per WPF
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

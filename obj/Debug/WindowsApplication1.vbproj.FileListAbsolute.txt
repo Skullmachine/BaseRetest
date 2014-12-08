@@ -1,0 +1,2 @@
+D:\users\F85601A\Desktop\Projet centralisation\Développement\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+d:\users\F85601A\Desktop\Projet centralisation\Développement\WindowsApplication1\WindowsApplication1\bin\Debug\baseRetest.exe.config

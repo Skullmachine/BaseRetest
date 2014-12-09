@@ -14,13 +14,13 @@ Public Class GUI
     Dim port As Integer = 5432
     Dim user As String = "postgres"
     Dim password As String = "postgres"
-    Dim filePathDestination As String = "/home/ubuntu/dbfiles/tracabiliteimport.csv"
+    Dim filePathDestination As String = "D:\tracabiliteimport.csv"
     Dim drive As String
     Dim originPathSource As String
     Dim computerLogin As String
     Dim computerPassword As String
     Dim filePathSource As String
-    Dim date_debut As Date = CDate("01/01/2012")
+    Dim date_debut As Date = CDate("01/02/2014")
     Dim date_fin As Date = CDate("31/12/2014")
     Dim queryString As String = _
    "SELECT dataimport();"
@@ -57,12 +57,6 @@ Public Class GUI
 
                 'Si un fichier a été copié alors on...
                 If Copy = True Then
-
-                    '*******************************
-                    '       Prévoir filtrage
-                    '*******************************
-
-                    'Functions.LineFilter()
 
                     'Importe dans la BDD le fichier qui a été copié
                     Functions.ImportationData(database, server, port, user, password, queryString, drive, Ligne("path").ToString, Ligne("login").ToString, Ligne("password").ToString, filePathSource, filePathDestination)

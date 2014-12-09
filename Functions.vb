@@ -2,14 +2,14 @@
 Imports System.Data
 Imports System.Xml
 Imports System.Data.Odbc
-Imports Microsoft.VisualBasic.FileIO
+Imports System.IO
 
 
 
 Module Functions
 
     '*-------------------*Importation des données dans la base*----------------------*
-    Public Sub ImportationData(database As String, server As String, port As Integer, user As String, password As String, queryString As String, drive As String, originPathSource As String, computerLogin As String, computerPassword As String, filePathSource As String, filePathDestination As String) As Boolean
+    Public Sub ImportationData(database As String, server As String, port As Integer, user As String, password As String, queryString As String, drive As String, originPathSource As String, computerLogin As String, computerPassword As String, filePathSource As String, filePathDestination As String)
 
         '*****************Création d'un objet OdbcCommand contenant la requête SQL à exécuter*****************
         Dim command As New OdbcCommand(queryString)
@@ -77,7 +77,6 @@ Module Functions
     Public Function FileName(drive As String, DateRun As Date, filePathDestination As String) As Boolean
 
         Dim Copy As Boolean = False
-
         Dim myProcess As New Process()
 
         'On donne le nom de l'application
@@ -86,30 +85,37 @@ Module Functions
         'Si le fichier existe alors...
         If (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then
 
-            'On copie le fichier avec le protocle ssh avec l'application pscp sur le serveur Linux où se situe la BDD
-            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            'On copie le fichier sur le pc où se situe l'application
+            CopyFile(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", filePathDestination)
 
             'On met Copy égal à True
             Copy = True
 
-        ElseIf (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then
-            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+        ElseIf (Dir(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", vbNormal) = "Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then
+            CopyFile(drive & "\Résultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", filePathDestination)
             Copy = True
         ElseIf (Dir(drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv", vbNormal) = "Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv") Then
-            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            CopyFile(drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".csv", filePathDestination)
             Copy = True
         ElseIf (Dir(drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak", vbNormal) = "Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak") Then
-            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            CopyFile(drive & "\Résultats00" & DateRun.ToString("yy_MM_dd") & ".bak", filePathDestination)
             Copy = True
         ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv") Then
-            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+            CopyFile(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", filePathDestination)
             Copy = True
-        ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".csv", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then
-            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ " & drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
+        ElseIf (Dir(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", vbNormal) = "Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak") Then
+            CopyFile(drive & "\Resultats" & DateRun.ToString("yyyy_MM_dd") & ".bak", filePathDestination)
             Copy = True
         End If
 
+        'Si un fichier a été copié
         If Copy = True Then
+
+            'Filtrage de la table pour l'importation
+            FilterFile("D:\tracabiliteimport.csv")
+
+            'On copie le fichier avec le protocole ssh avec l'application pscp sur le serveur Linux où se situe la BDD
+            myProcess.StartInfo.Arguments = "/c pscp -pw ubuntu86+ D:\tracabiliteimport.csv ubuntu@172.16.52.60:/home/ubuntu/dbfiles/tracabiliteimport.csv"
 
             'Cache l'invite de commande Windows
             myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
@@ -130,22 +136,85 @@ Module Functions
 
     End Function
 
-    Public Sub LineFilter()
+    Public Sub FilterFile(file As String)
 
-        Dim nbPVirgule
+        'Création d'une instance de StreamReader pour permettre la lecture de notre fichier
+        Dim myStreamReader As StreamReader = New StreamReader(file)
 
-
-        ' Do Until MonFichier.EndRea
-
-        'MonFichier = New IO.FileStream("D:\tracabiliteimport.csv", IO.FileMode.Open)
-
-        ' If MonFichier.CanRead() Then
-        'Dim Contenu(100000) As Byte
-        'MonFichier.Position = 0
-        'MonFichier.Read(Contenu, 0, 1000000)
+        'Création d'une chaîne de caractère contenant une ligne
+        Dim strLine As String
 
 
-        'End If
+        Dim myArray(10000) As Object
+        Dim i, j As Long
+
+        i = 0
+
+        Try
+            'Read the first line of text.
+            strLine = myStreamReader.ReadLine
+
+            'Lecture de toutes les lignes
+            Do
+
+                Dim myWord As String = ";"
+                Dim compteur As Integer = -1
+                Dim index As Integer = -1
+
+                Do
+
+                    compteur += 1
+
+                    index = strLine.IndexOf(myWord, index + 1)
+
+                Loop Until index < 0
+
+                If (compteur <> 33) Then
+                    strLine = ""
+                Else
+                    strLine = myStreamReader.ReadLine()
+                    i = i + 1
+                End If
+
+                myArray(i) = strLine
+
+            Loop Until strLine Is Nothing
+
+            'Fermeture du StreamReader
+            myStreamReader.Close()
+
+        Catch ex As Exception
+
+            ' Let the user know what went wrong.
+            Console.WriteLine("The file could not be read:")
+            Console.WriteLine(ex.Message)
+
+        End Try
+
+        'Création d'une instance de StreamWriter pour permettre l'écriture de notre fichier
+        Dim myStreamWriter As StreamWriter = New StreamWriter(file)
+
+        Try
+
+            'Open the file.
+            myStreamWriter = New StreamWriter(file)
+
+            'Write out the numbers 1 through 10 on the same line.
+            For j = 0 To i
+
+                myStreamWriter.WriteLine(myArray(j))
+
+            Next j
+
+            'Close the file.
+            myStreamWriter.Close()
+
+        Catch ex As Exception
+
+            ' Let the user know what went wrong.
+            Console.WriteLine("The file could not be written:")
+            Console.WriteLine(ex.Message)
+        End Try
 
     End Sub
 
@@ -176,15 +245,3 @@ Module Functions
     End Function
 
 End Module
-
-
-'Dim lines As String() = System.IO.File.ReadAllLines("D:\tracabiliteimport.csv")
-
-'    nbPVirgule = 0
-
-'   For Each line In lines
-'    If 
-'    Next
-
-
-'     System.IO.File.WriteAllLines("D:\tracabiliteimport.csv", lines)

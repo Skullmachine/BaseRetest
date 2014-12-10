@@ -8,7 +8,6 @@ Imports Microsoft.VisualBasic.FileIO
 
 Public Class GUI
 
-
     Dim database As String = "postgres"
     Dim server As String = "172.16.52.60"
     Dim port As Integer = 5432
@@ -78,5 +77,34 @@ Public Class GUI
 
     End Sub
 
+    Private Sub CB_server_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_server.TextChanged
+
+        server = CB_server.Text
+
+    End Sub
+
+    Private Sub CB_database_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_database.TextChanged
+
+        database = CB_database.Text
+
+    End Sub
+
+    Private Sub CB_port_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_port.TextChanged
+
+        port = CB_port.Text
+
+    End Sub
+
+    Private Sub CB_username_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_username.TextChanged
+
+        user = CB_username.Text
+
+    End Sub
+
+    Private Sub CB_password_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_password.SelectedIndexChanged
+
+        password = CB_password.Text
+
+    End Sub
 
 End Class

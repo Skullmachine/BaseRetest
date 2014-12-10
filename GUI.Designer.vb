@@ -24,19 +24,20 @@ Partial Class GUI
     Private Sub InitializeComponent()
         Me.BT_Importer = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CB_Database = New System.Windows.Forms.ComboBox()
+        Me.CB_database = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.CB_Port = New System.Windows.Forms.ComboBox()
-        Me.CB_Username = New System.Windows.Forms.ComboBox()
+        Me.CB_port = New System.Windows.Forms.ComboBox()
+        Me.CB_username = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.CB_Password = New System.Windows.Forms.ComboBox()
+        Me.CB_password = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.BT_InfosTesteurs = New System.Windows.Forms.Button()
+        Me.CB_server = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BT_Importer
         '
-        Me.BT_Importer.Location = New System.Drawing.Point(112, 225)
+        Me.BT_Importer.Location = New System.Drawing.Point(127, 187)
         Me.BT_Importer.Name = "BT_Importer"
         Me.BT_Importer.Size = New System.Drawing.Size(129, 23)
         Me.BT_Importer.TabIndex = 0
@@ -46,100 +47,111 @@ Partial Class GUI
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(31, 72)
+        Me.Label1.Location = New System.Drawing.Point(31, 42)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Database:"
         '
-        'CB_Database
+        'CB_database
         '
-        Me.CB_Database.FormattingEnabled = True
-        Me.CB_Database.Items.AddRange(New Object() {"postgres"})
-        Me.CB_Database.Location = New System.Drawing.Point(93, 69)
-        Me.CB_Database.Name = "CB_Database"
-        Me.CB_Database.Size = New System.Drawing.Size(70, 21)
-        Me.CB_Database.TabIndex = 3
-        Me.CB_Database.Text = "postgres"
+        Me.CB_database.FormattingEnabled = True
+        Me.CB_database.Items.AddRange(New Object() {"postgres"})
+        Me.CB_database.Location = New System.Drawing.Point(93, 39)
+        Me.CB_database.Name = "CB_database"
+        Me.CB_database.Size = New System.Drawing.Size(70, 21)
+        Me.CB_database.TabIndex = 3
+        Me.CB_database.Text = "postgres"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(31, 99)
+        Me.Label2.Location = New System.Drawing.Point(31, 94)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(29, 13)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Port:"
         '
-        'CB_Port
+        'CB_port
         '
-        Me.CB_Port.FormattingEnabled = True
-        Me.CB_Port.Items.AddRange(New Object() {"5432"})
-        Me.CB_Port.Location = New System.Drawing.Point(93, 96)
-        Me.CB_Port.Name = "CB_Port"
-        Me.CB_Port.Size = New System.Drawing.Size(70, 21)
-        Me.CB_Port.TabIndex = 5
-        Me.CB_Port.Text = "5432"
+        Me.CB_port.FormattingEnabled = True
+        Me.CB_port.Items.AddRange(New Object() {"5432"})
+        Me.CB_port.Location = New System.Drawing.Point(93, 91)
+        Me.CB_port.Name = "CB_port"
+        Me.CB_port.Size = New System.Drawing.Size(92, 21)
+        Me.CB_port.TabIndex = 5
+        Me.CB_port.Text = "5432"
         '
-        'CB_Username
+        'CB_username
         '
-        Me.CB_Username.FormattingEnabled = True
-        Me.CB_Username.Items.AddRange(New Object() {"postgres"})
-        Me.CB_Username.Location = New System.Drawing.Point(93, 123)
-        Me.CB_Username.Name = "CB_Username"
-        Me.CB_Username.Size = New System.Drawing.Size(70, 21)
-        Me.CB_Username.TabIndex = 7
-        Me.CB_Username.Text = "postgres"
+        Me.CB_username.FormattingEnabled = True
+        Me.CB_username.Items.AddRange(New Object() {"postgres"})
+        Me.CB_username.Location = New System.Drawing.Point(93, 118)
+        Me.CB_username.Name = "CB_username"
+        Me.CB_username.Size = New System.Drawing.Size(70, 21)
+        Me.CB_username.TabIndex = 7
+        Me.CB_username.Text = "postgres"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(31, 126)
+        Me.Label3.Location = New System.Drawing.Point(31, 121)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 13)
+        Me.Label3.Size = New System.Drawing.Size(58, 13)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Username"
+        Me.Label3.Text = "Username:"
         '
-        'CB_Password
+        'CB_password
         '
-        Me.CB_Password.FormattingEnabled = True
-        Me.CB_Password.Items.AddRange(New Object() {"toor"})
-        Me.CB_Password.Location = New System.Drawing.Point(93, 150)
-        Me.CB_Password.Name = "CB_Password"
-        Me.CB_Password.Size = New System.Drawing.Size(70, 21)
-        Me.CB_Password.TabIndex = 9
-        Me.CB_Password.Text = "toor"
+        Me.CB_password.FormattingEnabled = True
+        Me.CB_password.Items.AddRange(New Object() {"toor"})
+        Me.CB_password.Location = New System.Drawing.Point(93, 145)
+        Me.CB_password.Name = "CB_password"
+        Me.CB_password.Size = New System.Drawing.Size(70, 21)
+        Me.CB_password.TabIndex = 9
+        Me.CB_password.Text = "postgres"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(31, 153)
+        Me.Label4.Location = New System.Drawing.Point(31, 148)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(53, 13)
+        Me.Label4.Size = New System.Drawing.Size(56, 13)
         Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Password"
+        Me.Label4.Text = "Password:"
         '
-        'BT_InfosTesteurs
+        'CB_server
         '
-        Me.BT_InfosTesteurs.Location = New System.Drawing.Point(112, 196)
-        Me.BT_InfosTesteurs.Name = "BT_InfosTesteurs"
-        Me.BT_InfosTesteurs.Size = New System.Drawing.Size(129, 23)
-        Me.BT_InfosTesteurs.TabIndex = 10
-        Me.BT_InfosTesteurs.Text = "BDD --> Infos Testeurs"
-        Me.BT_InfosTesteurs.UseVisualStyleBackColor = True
+        Me.CB_server.FormattingEnabled = True
+        Me.CB_server.Items.AddRange(New Object() {"172.16.52.60"})
+        Me.CB_server.Location = New System.Drawing.Point(93, 66)
+        Me.CB_server.Name = "CB_server"
+        Me.CB_server.Size = New System.Drawing.Size(92, 21)
+        Me.CB_server.TabIndex = 11
+        Me.CB_server.Text = "172.16.52.60"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(31, 69)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(47, 13)
+        Me.Label5.TabIndex = 12
+        Me.Label5.Text = "Serveur:"
         '
         'GUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(351, 269)
-        Me.Controls.Add(Me.BT_InfosTesteurs)
-        Me.Controls.Add(Me.CB_Database)
-        Me.Controls.Add(Me.CB_Password)
+        Me.ClientSize = New System.Drawing.Size(468, 433)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.CB_server)
+        Me.Controls.Add(Me.CB_database)
+        Me.Controls.Add(Me.CB_password)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.CB_Username)
+        Me.Controls.Add(Me.CB_username)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.CB_Port)
+        Me.Controls.Add(Me.CB_port)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BT_Importer)
@@ -152,13 +164,14 @@ Partial Class GUI
     End Sub
     Friend WithEvents BT_Importer As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents CB_Database As System.Windows.Forms.ComboBox
+    Friend WithEvents CB_database As System.Windows.Forms.ComboBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents CB_Port As System.Windows.Forms.ComboBox
-    Friend WithEvents CB_Username As System.Windows.Forms.ComboBox
+    Friend WithEvents CB_port As System.Windows.Forms.ComboBox
+    Friend WithEvents CB_username As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents CB_Password As System.Windows.Forms.ComboBox
+    Friend WithEvents CB_password As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents BT_InfosTesteurs As System.Windows.Forms.Button
+    Friend WithEvents CB_server As System.Windows.Forms.ComboBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class

@@ -138,50 +138,70 @@ Module Functions
 
     Public Sub FilterFile(file As String)
 
-        'Création d'une instance de StreamReader pour permettre la lecture de notre fichier
-        Dim myStreamReader As StreamReader = New StreamReader(file)
-
         'Création d'une chaîne de caractère contenant une ligne
         Dim strLine As String
-
-
         Dim myArray(10000) As Object
         Dim i, j As Long
-
+        Dim CopyLine
         i = 0
 
         Try
-            'Read the first line of text.
-            strLine = myStreamReader.ReadLine
+            Using sr As StreamReader = New StreamReader(file)
 
-            'Lecture de toutes les lignes
-            Do
-
-                Dim myWord As String = ";"
-                Dim compteur As Integer = -1
-                Dim index As Integer = -1
-
-                Do
-
-                    compteur += 1
-
-                    index = strLine.IndexOf(myWord, index + 1)
-
-                Loop Until index < 0
-
-                If (compteur <> 33) Then
-                    strLine = ""
-                Else
-                    strLine = myStreamReader.ReadLine()
-                    i = i + 1
-                End If
-
+                'Read the first line of text.
+                strLine = sr.ReadLine()
                 myArray(i) = strLine
 
-            Loop Until strLine Is Nothing
+                'Lecture de toutes les lignes
+                Do
+                    Dim myWord As String = ";"
+                    Dim compteur As Integer = -1
+                    Dim index As Integer = -1
 
-            'Fermeture du StreamReader
-            myStreamReader.Close()
+                    Do
+
+                        compteur += 1
+
+                        index = strLine.IndexOf(myWord, index + 1)
+                    Loop Until index < 0
+
+                    '**********Gestion erreur Labview**********
+
+                    'S'il n'y a que 31 point virgules
+                    If (compteur = 31) Then
+
+                        'On rajoute 2 ppoints virgules pour ne pas générer d'exception à l'importation 
+                        strLine = strLine & ";;"
+
+                        'On autorise la sauvegarde de la lecture de la ligne
+                        CopyLine = True
+
+                        ' S'il n'y a ni 33 ou 31 point virgules
+                    ElseIf compteur <> 33 And compteur <> 31 Then
+
+                        ' On simule 33 points virgules
+                        strLine = ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+
+                        ' On recule d'une case dans le tableau de lecture
+                        i -= 1
+
+                        ' On autorise pas la sauvegarde de la lecture
+                        CopyLine = False
+
+                        ' S'il y a 33 point virgules --> fonctionnement normal
+                    Else
+                        strLine = sr.ReadLine()
+                        i += 1
+                        CopyLine = True
+                    End If
+
+                    If (CopyLine = True) Then
+                        myArray(i) = strLine                 
+                    End If
+
+                Loop Until strLine Is Nothing
+
+            End Using
 
         Catch ex As Exception
 
@@ -191,23 +211,18 @@ Module Functions
 
         End Try
 
-        'Création d'une instance de StreamWriter pour permettre l'écriture de notre fichier
-        Dim myStreamWriter As StreamWriter = New StreamWriter(file)
-
         Try
 
             'Open the file.
-            myStreamWriter = New StreamWriter(file)
+            Using sw As StreamWriter = New StreamWriter(file)
 
-            'Write out the numbers 1 through 10 on the same line.
-            For j = 0 To i
+                For j = 0 To i - 1
 
-                myStreamWriter.WriteLine(myArray(j))
+                    sw.WriteLine(myArray(j))
 
-            Next j
+                Next j
 
-            'Close the file.
-            myStreamWriter.Close()
+            End Using
 
         Catch ex As Exception
 
@@ -217,31 +232,5 @@ Module Functions
         End Try
 
     End Sub
-
-    Function SansAccents(strAvecAccents)
-
-        Const ACCENT = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÌÍÎÏìíîïÙÚÛÜùúûüÿÑñÇç"
-        Const NOACCENT = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeIIIIiiiiUUUUuuuuyNnCc"
-
-        ' Définition des variables locales
-        Dim i
-        Dim lettre
-        Dim strSansAccents
-
-        strSansAccents = strAvecAccents
-        For i = 1 To Len(ACCENT)
-            lettre = Mid(ACCENT, i, 1)
-            If InStr(strSansAccents, lettre) > 0 Then
-                strSansAccents = Replace(strSansAccents, lettre, Mid(NOACCENT, i, 1))
-            End If
-        Next
-        SansAccents = strSansAccents
-
-        ' Libération des variables locales
-        i = Nothing
-        lettre = Nothing
-        strSansAccents = Nothing
-
-    End Function
 
 End Module
